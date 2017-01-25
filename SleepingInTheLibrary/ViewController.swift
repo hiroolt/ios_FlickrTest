@@ -98,23 +98,10 @@ class ViewController: UIViewController {
                 return
             }
             
-            /* GUARD: Did Flickr return an error (stat != ok)? */
-            
-            guard let stat = parsedResult[Constants.FlickrResponseKeys.Status] as? String, stat == Constants.FlickrResponseValues.OKStatus else {
-                displayError("Flickr API returned an error. See error code and message in \(parsedResult)")
-                return
-            }
-            
             
             /* GUARD: Are the "photos" and "photo" keys in our result? */
-            
-            guard let photosDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String:AnyObject] else {
-                displayError("Cannot find keys '\(Constants.FlickrResponseKeys.Photos)' in \(parsedResult)")
-                return
-            }
-            
-            guard let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]] else {
-                displayError("Cannot find keys '\(Constants.FlickrResponseKeys.Photo)' in \(parsedResult)")
+            guard let photosDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String:AnyObject], let photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]] else {
+                displayError("Cannot find keys '\(Constants.FlickrResponseKeys.Photos)' and '\(Constants.FlickrResponseKeys.Photo)' in \(parsedResult)")
                 return
             }
             
