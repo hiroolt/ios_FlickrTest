@@ -4,6 +4,7 @@
 //
 //  Created by Jarrod Parkes on 11/3/15.
 //  Copyright © 2015 Udacity. All rights reserved.
+//  Complited by Hiroki Sunagawa
 //
 
 import UIKit
